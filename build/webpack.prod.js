@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -9,6 +10,9 @@ module.exports = merge(common, {
     new UglifyJSPlugin({
       sourceMap: true
     }),
+    new ExtractTextPlugin({
+      filename:'css/styles.css'
+    })
   ], 
   mode: 'production'
 });

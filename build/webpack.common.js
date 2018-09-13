@@ -1,7 +1,6 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const rules = require('./rules');
@@ -19,14 +18,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(paths.src, 'index.html')
     }),
-    new ExtractTextPlugin('css/styles.css'),
     new VueLoaderPlugin()
   ],
   module: {
     rules
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx','.vue']
+    extensions: ['*', '.js', '.jsx','.vue'],
+    alias: { 'vue': 'vue/dist/vue.js' }
   },
   output: {
     filename: 'js/[name].[hash].js',
